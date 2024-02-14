@@ -1,0 +1,1 @@
+unsigned char* load(char* path) - creates an unsigned char array containing either rgb (3 byte stride) or rgba (4 byte stride), keep in mind the TGA files are capable of a lot more formats than this and therefore this may not work, most of the header meta data is unused, I'll expand on this if I ever feel I need to.

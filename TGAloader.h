@@ -24,7 +24,7 @@ unsigned char* load(char* path){
     headerTemp.bitDepth = headerBytes[16];
     headerTemp.imageDescriptor = headerBytes[17];
     if (headerTemp.bitDepth != 24 && headerTemp.bitDepth != 32) {
-        printf("This currently only supports 24 and 32 bit color, which this isn't, sorry\n");
+        printf("This currently only supports 24 and 32 bit color, which this file isn't, sorry\n");
         return NULL;
     }
     int dataSize = headerTemp.width * headerTemp.height * (headerTemp.bitDepth/8);
