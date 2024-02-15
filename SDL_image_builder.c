@@ -4,9 +4,10 @@
 
 int main(int argc, char* argv[]){
     SDL_Init(SDL_INIT_VIDEO);
-    //char* path = argv[0];
-    rgbArray* vals = load("chest_LOW_chest_BaseColor.tga"); 
-    printf("%i", vals->height);
+    char* path = argv[1];
+    //hardcoding option
+    //rgbArray* vals = load();
+    rgbArray* vals = load(path);  
     SDL_Window* window;    
 
     if (vals->height > 2000){
@@ -18,17 +19,15 @@ int main(int argc, char* argv[]){
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 vals->width, vals->height, 0);
    
-    
-    
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     int format;
     if(vals->stride == 3) format = SDL_PIXELFORMAT_RGB24;
     else format = SDL_PIXELFORMAT_RGBA32;
+    
     SDL_Texture* texture = SDL_CreateTexture(renderer,
                                              format, SDL_TEXTUREACCESS_STREAMING,
                                              vals->width, vals->height);
     if(!texture){printf("%s", SDL_GetError()); return 0;}
-
 
     SDL_UpdateTexture(texture, NULL, vals->values, vals->width * vals->stride);
 
@@ -50,6 +49,5 @@ int main(int argc, char* argv[]){
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-
     return 0;
 }
