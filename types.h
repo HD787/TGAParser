@@ -12,3 +12,9 @@ typedef struct{
     char  bitDepth;
     char  imageDescriptor;
 }header;
+typedef struct{
+    unsigned char* values;
+    short width;
+    short height;
+    short stride;
+}rgbArray;

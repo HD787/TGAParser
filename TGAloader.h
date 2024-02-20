@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "types.h"
-unsigned char* load(char* path){
+rgbArray* load(char* path){
     FILE* file = fopen(path, "r");
     if(file == NULL){
         printf("no file :(");
@@ -27,8 +27,13 @@ unsigned char* load(char* path){
         printf("This currently only supports 24 and 32 bit color, which this file isn't, sorry\n");
         return NULL;
     }
-    int dataSize = headerTemp.width * headerTemp.height * (headerTemp.bitDepth/8);
+    int dataSize = (headerTemp.width) * (headerTemp.height) * (headerTemp.bitDepth/8);
     unsigned char* result = malloc(dataSize);
     fread(result, sizeof(char), dataSize, file);
-    return result;
+    rgbArray* arr = malloc(sizeof(rgbArray));
+    arr->values = result;
+    arr->height = headerTemp.height;
+    arr->width = headerTemp.width;
+    arr->stride = headerTemp.bitDepth/8;
+    return arr;
 }
