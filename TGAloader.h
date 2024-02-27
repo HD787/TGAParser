@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "types.h"
-rgbArray* load(char* path){
+rgbArray* loadTGA(char* path){
     FILE* file = fopen(path, "r");
     if(file == NULL){
         printf("no file :(");
