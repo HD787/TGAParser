@@ -1,3 +1,3 @@
-unsigned char* load(char* path) - creates an unsigned char array containing either rgb (3 byte stride) or rgba (4 byte stride), keep in mind the TGA files are capable of a lot more formats than this and therefore this may not work, most of the header meta data is unused, I'll expand on this if I ever feel I need to.
+unsigned char* load(char* path) - creates an unsigned char array containing either RGB or RGBA, this is currently limited to raw RGB or RGBA data and uncompressed color-mapped images, TGA files can hold other formats, and I may expand this to handle those in the future, I've done it before.
 
 SDL_image_builder.c is a test script that used SDL to rebuild the image from the extracted RGB/RGBA data, might be helpful
