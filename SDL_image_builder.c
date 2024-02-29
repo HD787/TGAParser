@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
     char* path = argv[1];
     //hardcoding option
     //rgbArray* vals = load();
-    rgbArray* vals = load(path);  
+    rgbArray* vals = loadTGA(path);  
     SDL_Window* window;    
 
     if (vals->height > 2000){
